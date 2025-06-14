@@ -70,7 +70,6 @@ export default function Dashboard() {
         .eq('user_id', user.id)
         .order('created_at', { ascending: false })
         .limit(1)
-        .single()
 
       const totalHydration = hydration?.reduce((sum, log) => sum + log.amount_ml, 0) || 0
       const todayTasks = todos?.length || 0
@@ -82,7 +81,7 @@ export default function Dashboard() {
         hydrationAmount: totalHydration,
         todaySteps: steps?.steps || 0,
         journalEntries: journalCount || 0,
-        moodScore: recentMood?.intensity || 0
+        moodScore: recentMood?.[0]?.intensity || 0
       })
     } catch (error) {
       console.error('Error fetching dashboard data:', error)
