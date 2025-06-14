@@ -10,6 +10,7 @@ import Breathe from './pages/Breathe'
 import Hydration from './pages/Hydration'
 import Mood from './pages/Mood'
 import Steps from './pages/Steps'
+import Journal from './pages/Journal'
 
 // Protected Route Component
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -78,7 +79,7 @@ function App() {
               <Route path="hydration" element={<Hydration />} />
               <Route path="mood" element={<Mood />} />
               <Route path="steps" element={<Steps />} />
-              <Route path="journal" element={<div className="p-8 text-center">Journal coming soon!</div>} />
+              <Route path="journal" element={<Journal />} />
             </Route>
           </Routes>
         </div>
