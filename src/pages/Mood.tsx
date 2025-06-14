@@ -52,7 +52,6 @@ export default function Mood() {
         .eq('date', today)
         .order('created_at', { ascending: false })
         .limit(1)
-        .single()
 
       // Fetch weekly moods
       const { data: weeklyData } = await supabase
@@ -62,7 +61,7 @@ export default function Mood() {
         .gte('date', weekAgo)
         .order('date', { ascending: false })
 
-      setTodayMood(todayData || null)
+      setTodayMood(todayData?.[0] || null)
       setWeeklyMoods(weeklyData || [])
     } catch (error) {
       console.error('Error fetching mood data:', error)

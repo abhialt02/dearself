@@ -39,7 +39,6 @@ export default function Steps() {
         .select('*')
         .eq('user_id', user.id)
         .eq('date', today)
-        .single()
 
       // Fetch weekly steps
       const { data: weeklyData } = await supabase
@@ -49,7 +48,7 @@ export default function Steps() {
         .gte('date', weekAgo)
         .order('date', { ascending: false })
 
-      setTodaySteps(todayData || null)
+      setTodaySteps(todayData?.[0] || null)
       setWeeklySteps(weeklyData || [])
     } catch (error) {
       console.error('Error fetching steps data:', error)

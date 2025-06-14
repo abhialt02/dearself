@@ -55,7 +55,6 @@ export default function Dashboard() {
         .select('steps')
         .eq('user_id', user.id)
         .eq('date', today)
-        .single()
 
       // Fetch journal entries count
       const { count: journalCount } = await supabase
@@ -79,7 +78,7 @@ export default function Dashboard() {
         todayTasks,
         completedTasks,
         hydrationAmount: totalHydration,
-        todaySteps: steps?.steps || 0,
+        todaySteps: steps?.[0]?.steps || 0,
         journalEntries: journalCount || 0,
         moodScore: recentMood?.[0]?.intensity || 0
       })
